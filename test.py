@@ -1,5 +1,5 @@
 import unittest
-from cipher import Caesar, Rot13
+from cipher import Caesar, Rot13, Vigenere
 
 
 class TestCipherMixin:
@@ -35,6 +35,17 @@ class TestRot13(TestCipherMixin, unittest.TestCase):
 
     def decode(self, code):
         return Rot13.decode(code)
+
+
+class TestVigenere(unittest.TestCase):
+    text = 'the five boxing wizards jump quickly'
+    key = 'helloworld'
+
+    def encode(self, text):
+        return Vigenere.encode((self.text, self.key))
+
+    def decode(self, code):
+        return Vigenere.decode((self.text, self.key))
 
 
 if __name__ == '__main__':
